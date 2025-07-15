@@ -5,7 +5,7 @@ IFS=$'\n\t'
 
 HUB_USER_NAME="videoscore2_exp"
 CURR_MODEL_NAME="vs2_qwen2_5vl_sft_17k"
-DATASET_NAME="try_debug"
+DATASET_NAME="sft_17k"
 HUB_MODEL_ID="${HUB_USER_NAME}/${CURR_MODEL_NAME}"
 
 # read from .bashrc or set explicitly
