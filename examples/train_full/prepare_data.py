@@ -50,13 +50,10 @@ def update_dataset_info(sft_data_name: str, data_file: str, ds_info_path: str = 
     ds_infos[sft_data_name] = {
         "file_name": data_file,
         "formatting": "sharegpt",
-        "columns": {"messages": "messages", "videos": "videos"},
-        "tags": {
-            "role_tag": "role",
-            "content_tag": "content",
-            "user_tag": "user",
-            "assistant_tag": "assistant",
-        },
+        "columns": {
+            "messages": "conversations",
+            "videos": "videos"
+        }
     }
 
     with open(ds_info_path, "w", encoding="utf-8") as f:
@@ -87,7 +84,7 @@ def main(sft_data_name: str):
         print(f"[ok] Unzipped → {video_dir}")
     except BadZipFile as e:
         print(f"[error] Bad zip file: {e}")
-
+    os.remove(zip_save)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Prepare SFT JSON & ZIP")

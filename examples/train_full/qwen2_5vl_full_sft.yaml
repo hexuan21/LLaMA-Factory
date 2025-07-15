@@ -14,7 +14,7 @@ freeze_language_model: false
 deepspeed: examples/deepspeed/ds_z3_config.json
 
 ### dataset
-dataset: vs2_sft_17k
+dataset: null
 template: qwen2_vl
 cutoff_len: 2048
 max_samples: 1000
@@ -30,6 +30,8 @@ plot_loss: true
 overwrite_output_dir: true
 save_only_model: false
 report_to: wandb  # choices: [none, wandb, tensorboard, swanlab, mlflow]
+export_hub_model_id: null
+hf_hub_token: null
 
 ### train
 per_device_train_batch_size: 1

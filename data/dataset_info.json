@@ -714,5 +714,13 @@
       "prompt": "content"
     },
     "folder": "python"
+  },
+  "try_debug": {
+    "file_name": "try_debug.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "videos": "videos"
+    }
   }
 }
