@@ -21,7 +21,7 @@ wandb login --relogin $WANDB_TOKEN
 echo "WandB login."
 
 echo "Start training ..."
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 llamafactory-cli train examples/train_full/qwen2_5vl_full_sft.yaml \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 llamafactory-cli train examples/train_full/qwen2_5vl_7b_full_sft.yaml \
     dataset=${DATASET_NAME} \
     output_dir="saves/${CURR_MODEL_NAME}" \
     export_hub_model_id=${HUB_MODEL_ID} \
