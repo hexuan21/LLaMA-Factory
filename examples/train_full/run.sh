@@ -7,7 +7,7 @@ DATASET_NAME="sft_17k"
 # DATASET_NAME="try_debug"
 
 # read from .bashrc or set explicitly
-WANDB_TOKEN="${WANDB_TOKEN:?Set WANDB_TOKEN}"
+# WANDB_TOKEN="${WANDB_TOKEN:?Set WANDB_TOKEN}"
 HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN}"
 
 # echo "Download SFT data and videos. Update dataset_info.json"
@@ -16,8 +16,8 @@ HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN}"
 #     --sft_data_name ${DATASET_NAME} \
 #     --frame_or_video "v"
 
-wandb login --relogin $WANDB_TOKEN
-echo "WandB login."
+# wandb login --relogin $WANDB_TOKEN
+# echo "WandB login."
 
 echo "Start training ..."
 llamafactory-cli train examples/train_full/vs2_qwen2_5vl_sft_17k_1e-5_bs64.yaml \
