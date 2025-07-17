@@ -73,6 +73,11 @@ def main(sft_data_name: str):
     video_dir = os.path.join("data", "videos")
 
     download_file(data_url, data_save)
+    with open(data_save, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        data = [x for x in data if '000241_a.mp4' not in x['videos'][0]]
+    with open(data_save, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
     download_file(zip_url, zip_save)
 
     update_dataset_info(sft_data_name, data_file)

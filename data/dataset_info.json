@@ -722,5 +722,13 @@
       "messages": "conversations",
       "videos": "videos"
     }
+  },
+  "sft_17k": {
+    "file_name": "sft_17k.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "videos": "videos"
+    }
   }
 }
