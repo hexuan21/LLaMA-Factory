@@ -177,3 +177,9 @@ wandb/
 swanlog/
 generated_predictions.jsonl
 predictions_score.json
+
+
+data/videos/
+data/videos*/
+data/sft_17k.json
+data/try_debug.json
