@@ -10,11 +10,11 @@ DATASET_NAME="sft_17k"
 WANDB_TOKEN="${WANDB_TOKEN:?Set WANDB_TOKEN}"
 HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN}"
 
-echo "Download SFT data and videos. Update dataset_info.json"
-echo "Current SFT data name: ${DATASET_NAME}"
-python examples/train_full/prepare_data.py \
-    --sft_data_name ${DATASET_NAME} \
-    --frame_or_video "v"
+# echo "Download SFT data and videos. Update dataset_info.json"
+# echo "Current SFT data name: ${DATASET_NAME}"
+# python examples/train_full/prepare_data.py \
+#     --sft_data_name ${DATASET_NAME} \
+#     --frame_or_video "v"
 
 wandb login --relogin $WANDB_TOKEN
 echo "WandB login."
