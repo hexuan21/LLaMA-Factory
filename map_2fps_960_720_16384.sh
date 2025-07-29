@@ -16,9 +16,11 @@ export http_proxy="http://100.64.117.161:3128"
 cd /map-vepfs/xuan/LLaMA-Factory
 
 export HF_HOME='/map-vepfs/huggingface'
+WANDB_TOKEN="${WANDB_TOKEN:?Set WANDB_TOKEN}"
+HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN}"
 
 wandb login --relogin $WANDB_TOKEN
 echo "Start training..."
-llamafactory-cli train examples/train_full/vs2_qwen2_5vl_sft_17k_2e-4_8fps_960_720_16384.yaml \
+llamafactory-cli train examples/train_full/vs2_qwen2_5vl_sft_17k_2e-4_2fps_960_720_16384.yaml \
     hf_hub_token=$HF_TOKEN \
     dataset=sft_17k
