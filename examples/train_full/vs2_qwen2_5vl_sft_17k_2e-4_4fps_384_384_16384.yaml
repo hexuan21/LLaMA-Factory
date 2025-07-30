@@ -5,6 +5,7 @@ trust_remote_code: true
 
 video_fps: 4.0
 video_maxlen: 16
+video_max_pixels: 147456 # 384*384
 use_audio_in_video: False
 
 ### method
@@ -26,20 +27,20 @@ preprocessing_num_workers: 16
 dataloader_num_workers: 4
 
 ### output
-output_dir: saves/vs2_qwen2_5vl_sft_17k_1e-5_4fps_16384
+output_dir: saves/vs2_qwen2_5vl_sft_17k_2e-4_4fps_512_512_16384
 logging_steps: 5
 save_steps: 200
 plot_loss: true
 overwrite_output_dir: true
 save_only_model: false
 report_to: wandb  # choices: [none, wandb, tensorboard, swanlab, mlflow]
-export_hub_model_id: videoscore2/vs2_qwen2_5vl_sft_17k_1e-5_4fps_16384
+export_hub_model_id: videoscore2/vs2_qwen2_5vl_sft_17k_2e-4_4fps_512_512_16384
 hf_hub_token: null
 
 ### train
-per_device_train_batch_size: 2
+per_device_train_batch_size: 1
 gradient_accumulation_steps: 8
-learning_rate: 1.0e-5
+learning_rate: 2.0e-4
 num_train_epochs: 2.0
 lr_scheduler_type: cosine
 warmup_ratio: 0.1

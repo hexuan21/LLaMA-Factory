@@ -4,7 +4,7 @@ image_max_pixels: 262144
 trust_remote_code: true
 
 video_fps: 2.0
-video_maxlen: 10
+video_maxlen: 8
 video_max_pixels: 691200 # 960*720
 use_audio_in_video: False
 
@@ -20,21 +20,21 @@ deepspeed: examples/deepspeed/ds_z3_config.json
 ### dataset
 dataset: sft_17k
 template: qwen2_vl
-cutoff_len: 16384
+cutoff_len: 8192
 max_samples: 1000000
 overwrite_cache: true
 preprocessing_num_workers: 16
 dataloader_num_workers: 4
 
 ### output
-output_dir: saves/vs2_qwen2_5vl_sft_17k_2e-4_4fps_960_720_16384
+output_dir: saves/vs2_qwen2_5vl_sft_17k_2e-4_2fps_960_720_8192
 logging_steps: 5
 save_steps: 200
 plot_loss: true
 overwrite_output_dir: true
 save_only_model: false
 report_to: wandb  # choices: [none, wandb, tensorboard, swanlab, mlflow]
-export_hub_model_id: videoscore2/vs2_qwen2_5vl_sft_17k_2e-4_8fps_960_720_16384
+export_hub_model_id: videoscore2/vs2_qwen2_5vl_sft_17k_2e-4_2fps_960_720_8192
 hf_hub_token: null
 
 ### train
