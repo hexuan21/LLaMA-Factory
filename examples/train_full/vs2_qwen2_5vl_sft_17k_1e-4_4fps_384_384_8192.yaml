@@ -27,20 +27,20 @@ preprocessing_num_workers: 16
 dataloader_num_workers: 4
 
 ### output
-output_dir: saves/vs2_qwen2_5vl_sft_17k_2e-4_4fps_384_384_8192
+output_dir: saves/vs2_qwen2_5vl_sft_17k_1e-4_4fps_384_384_8192
 logging_steps: 5
 save_steps: 200
 plot_loss: true
 overwrite_output_dir: true
 save_only_model: false
 report_to: wandb  # choices: [none, wandb, tensorboard, swanlab, mlflow]
-export_hub_model_id: videoscore2/vs2_qwen2_5vl_sft_17k_2e-4_4fps_384_384_8192
+export_hub_model_id: videoscore2/vs2_qwen2_5vl_sft_17k_1e-4_4fps_384_384_8192
 hf_hub_token: null
 
 ### train
 per_device_train_batch_size: 1
 gradient_accumulation_steps: 8
-learning_rate: 2.0e-4
+learning_rate: 1.0e-4
 num_train_epochs: 2.0
 lr_scheduler_type: cosine
 warmup_ratio: 0.1
