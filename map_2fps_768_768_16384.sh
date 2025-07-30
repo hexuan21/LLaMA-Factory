@@ -21,6 +21,6 @@ HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN}"
 
 wandb login --relogin $WANDB_TOKEN
 echo "Start training..."
-llamafactory-cli train examples/train_full/vs2_qwen2_5vl_sft_17k_2e-4_2fps_960_720_16384.yaml \
+llamafactory-cli train examples/train_full/vs2_qwen2_5vl_sft_17k_2e-4_2fps_768_768_16384.yaml \
     hf_hub_token=$HF_TOKEN \
     dataset=sft_17k
