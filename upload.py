@@ -5,10 +5,13 @@ import argparse
 def upload_files_individually_to_hub(
     local_dir: str,
 ):
-    api = HfApi()
+    token=os.environ["HF_TOKEN"]
     model_name=local_dir.split('/')[-1]
     repo_id=f"videoscore2/{model_name}"
-    token=os.environ["HF_TOKEN"]
+    
+    api = HfApi(token=token)
+    
+    
     repo_type="model"
     try:
         api.repo_info(repo_id=repo_id, repo_type=repo_type)
