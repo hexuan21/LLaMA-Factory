@@ -8,11 +8,16 @@ def upload_files_individually_to_hub(
     token=os.environ["HF_TOKEN"]
     model_name=local_dir.split('/')[-1]
     repo_id=f"videoscore2/{model_name}"
+    repo_type="model"
     
     api = HfApi(token=token)
+    api.whoami(token=token)
     
+    import requests
+    r = requests.get("https://huggingface.co")
+    print(r.status_code)
     
-    repo_type="model"
+    print("🔥 Starting")
     try:
         api.repo_info(repo_id=repo_id, repo_type=repo_type)
         print(f"✅ Repository '{repo_id}' already exists.")
@@ -24,6 +29,7 @@ def upload_files_individually_to_hub(
             repo_type=repo_type,
             private=False
         )
+        
     if not os.path.exists(local_dir):
         print(f"🚧 local dir not exist.")
         
