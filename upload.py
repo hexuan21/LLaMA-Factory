@@ -1,6 +1,5 @@
 import os
 from huggingface_hub import HfApi, upload_file
-from huggingface_hub.utils import RepositoryNotFoundError
 import argparse
 
 def upload_files_individually_to_hub(
@@ -14,7 +13,7 @@ def upload_files_individually_to_hub(
     try:
         api.repo_info(repo_id=repo_id, repo_type=repo_type)
         print(f"✅ Repository '{repo_id}' already exists.")
-    except RepositoryNotFoundError:
+    except Exception as e:
         print(f"🚧 Repository '{repo_id}' not found. Creating a new public repo...")
         api.create_repo(
             repo_id=repo_id,
