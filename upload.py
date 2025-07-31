@@ -45,7 +45,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--local_dir", type=str, required=True, help="Local folder path to upload")
     args = parser.parse_args()
-
+    print(args.local_dir)
     upload_files_individually_to_hub(
         local_dir=args.local_dir,
     )
