@@ -21,7 +21,9 @@ def upload_files_individually_to_hub(
             repo_type=repo_type,
             private=False
         )
-
+    if not os.path.exists(local_dir):
+        print(f"🚧 local dir not exist.")
+        
     for root, _, files in os.walk(local_dir):
         for file in files:
             abs_path = os.path.join(root, file)
