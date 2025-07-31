@@ -19,6 +19,6 @@ export HF_HOME='/map-vepfs/huggingface'
 
 wandb login --relogin $WANDB_TOKEN
 echo "Start training..."
-llamafactory-cli train examples/train_full/vs2_qwen2_5vl_sft_17k_2e-4_2fps_1024_1024_4096.yaml \
+llamafactory-cli train examples/train_full/vs2_qwen2_5vl_sft_17k_2e-4_2fps_1024_1024_8192.yaml \
     hf_hub_token=$HF_TOKEN \
     dataset=sft_17k
