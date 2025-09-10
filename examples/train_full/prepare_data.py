@@ -15,7 +15,7 @@ from tqdm import tqdm
 from zipfile import ZipFile, BadZipFile
 
 HF_DATASET_USER = "hexuan21"
-HF_DATASET_NAME = "vs2_sft"
+HF_DATASET_NAME = "vs2_sft_data"
 HF_VIDEO_NAME   = "vs2_sft_video"
 CHUNK = 1 << 14  # 16 KB
 
