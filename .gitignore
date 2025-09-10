@@ -183,3 +183,4 @@ data/videos/
 data/videos*/
 data/sft_17k.json
 data/try_debug.json
+*.slurm
