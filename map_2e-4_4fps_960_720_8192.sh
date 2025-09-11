@@ -21,4 +21,4 @@ wandb login --relogin $WANDB_API_KEY
 echo "Start training..."
 llamafactory-cli train examples/train_full/vs2_qwen2_5vl_sft_17k_2e-4_4fps_960_720_8192.yaml \
     hf_hub_token=$HF_TOKEN \
-    dataset=sft_17k
+    dataset=sft_25k
