@@ -18,7 +18,7 @@ freeze_language_model: false
 deepspeed: examples/deepspeed/ds_z3_config.json
 
 ### dataset
-dataset: sft_17k
+dataset: None  # set in cmd args
 template: qwen2_vl
 cutoff_len: 8192
 max_samples: 1000000
