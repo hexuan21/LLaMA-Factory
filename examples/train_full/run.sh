@@ -7,7 +7,7 @@ DATASET_NAME="sft_25k"
 # DATASET_NAME="try_debug"
 
 # read from .bashrc or set explicitly
-WANDB_TOKEN="${WANDB_TOKEN:?Set WANDB_TOKEN}"
+WANDB_API_KEY="${WANDB_API_KEY:?Set WANDB_API_KEY}"
 HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN}"
 
 # echo "Download SFT data and videos. Update dataset_info.json"
@@ -16,7 +16,7 @@ HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN}"
 #     --sft_data_name "sft_25k" \
 #     --frame_or_video "v"
 
-wandb login --relogin $WANDB_TOKEN
+wandb login --relogin $WANDB_API_KEY
 echo "WandB login."
 
 echo "Start training ..."

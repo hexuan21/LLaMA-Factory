@@ -1,0 +1,7 @@
+uv venv .envs/lmfac
+source .envs/lmfac/bin/activate
+
+uv pip install -e ".[torch,metrics]"
+uv pip install wandb
+uv pip install deepspeed==0.16.9
+uv pip install --no-deps transformers==4.50.0
