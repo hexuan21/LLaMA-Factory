@@ -13,7 +13,7 @@ HF_TOKEN="${HF_TOKEN:?Set HF_TOKEN}"
 # echo "Download SFT data and videos. Update dataset_info.json"
 # echo "Current SFT data name: ${DATASET_NAME}"
 # python examples/train_full/prepare_data.py \
-#     --sft_data_name "sft_25k" \
+#     --sft_data_name "sft_27k" \
 #     --frame_or_video "v"
 
 wandb login --relogin $WANDB_API_KEY
