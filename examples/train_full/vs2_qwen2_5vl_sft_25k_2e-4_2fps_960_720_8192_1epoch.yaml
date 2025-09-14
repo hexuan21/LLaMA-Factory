@@ -29,7 +29,7 @@ dataloader_num_workers: 2
 ### output
 output_dir: saves/vs2_qwen2_5vl_sft_25k_2e-4_2fps_960_720_8192_1epoch
 logging_steps: 5
-save_steps: 200
+save_steps: 300
 plot_loss: true
 overwrite_output_dir: true
 save_only_model: false
