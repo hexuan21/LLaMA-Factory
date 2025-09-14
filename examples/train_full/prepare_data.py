@@ -16,7 +16,7 @@ from zipfile import ZipFile, BadZipFile
 
 HF_DATASET_USER = "hexuan21"
 HF_DATASET_NAME = "vs2_sft_data"
-HF_VIDEO_NAME   = "vs2_sft_video"
+HF_VIDEO_REPO   = "hexuan21/vs2_sft_video"
 CHUNK = 1 << 14  # 16 KB
 
 
@@ -74,42 +74,45 @@ def update_dataset_info(sft_data_name: str, data_file: str, ds_info_path: str = 
 def main(sft_data_name: str, frame_or_video: str):
     data_file  = f"{sft_data_name}.json"
     data_save = os.path.join("data", data_file)
-
+    core_name=sft_data_name
+    if "no_cot" in core_name:
+        core_name=sft_data_name.replace("_no_cot","")
+    
+    from huggingface_hub import list_repo_files
+    hf_video_repo_files = list_repo_files(HF_VIDEO_REPO,repo_type="dataset")
+    
     if frame_or_video in ["frames","frame","f"]:
-        zip_file  = f"{sft_data_name}_frames.zip"    
-        if "no_cot" in zip_file:
-            zip_file  = f"{sft_data_name.replace("_no_cot","")}_frames.zip"    
+        zip_file_list=[f for f in hf_video_repo_files if core_name in f and f.endswith(".zip") and "frames" in f]
         f_v_dir = os.path.join("data", "frames")
+        
     if frame_or_video in ["videos","video","v"]:
-        zip_file  = f"{sft_data_name}_videos.zip"
-        if "no_cot" in zip_file:
-            zip_file  = f"{sft_data_name.replace("_no_cot","")}_videos.zip"    
+        zip_file_list=[f for f in hf_video_repo_files if core_name in f and f.endswith(".zip") and "videos" in f]
         f_v_dir = os.path.join("data", "videos")
-    zip_save = os.path.join("data", zip_file)
-    
+
     data_url = f"https://huggingface.co/datasets/{HF_DATASET_USER}/{HF_DATASET_NAME}/resolve/main/{data_file}"
-    zip_url = f"https://huggingface.co/datasets/{HF_DATASET_USER}/{HF_VIDEO_NAME}/resolve/main/{zip_file}"
-    
     download_file(data_url, data_save, overwrite=True)
     with open(data_save, "r", encoding="utf-8") as f:
         data = json.load(f)
     with open(data_save, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
-    download_file(zip_url, zip_save, overwrite=True)
-
     update_dataset_info(sft_data_name, data_file)
-
-    os.makedirs(f_v_dir, exist_ok=True)
-    try:
-        if os.path.exists(f_v_dir):
-            shutil.rmtree(f_v_dir)
+        
+    for zip_file in zip_file_list:
+        zip_url = f"https://huggingface.co/datasets/{HF_VIDEO_REPO}/resolve/main/{zip_file}"
+        zip_save = os.path.join("data", f"{zip_file}")
+        download_file(zip_url, zip_save, overwrite=True)
         os.makedirs(f_v_dir, exist_ok=True)
-        with ZipFile(zip_save) as zf:
-            zf.extractall(f_v_dir)
-        print(f"[ok] Unzipped → {f_v_dir}")
-    except BadZipFile as e:
-        print(f"[error] Bad zip file: {e}")
-    os.remove(zip_save)
+        try:
+            if os.path.exists(f_v_dir):
+                shutil.rmtree(f_v_dir)
+            os.makedirs(f_v_dir, exist_ok=True)
+            with ZipFile(zip_save) as zf:
+                zf.extractall(f_v_dir)
+            print(f"[ok] Unzipped → {f_v_dir}")
+        except BadZipFile as e:
+            print(f"[error] Bad zip file: {e}")
+        os.remove(zip_save)
+        
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Prepare SFT JSON & ZIP")
