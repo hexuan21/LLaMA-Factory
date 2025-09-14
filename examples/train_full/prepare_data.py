@@ -88,7 +88,8 @@ def main(sft_data_name: str, frame_or_video: str):
     if frame_or_video in ["videos","video","v"]:
         zip_file_list=[f for f in hf_video_repo_files if core_name in f and f.endswith(".zip") and "videos" in f]
         f_v_dir = os.path.join("data", "videos")
-
+    print(zip_file_list)
+    
     data_url = f"https://huggingface.co/datasets/{HF_DATASET_USER}/{HF_DATASET_NAME}/resolve/main/{data_file}"
     download_file(data_url, data_save, overwrite=True)
     with open(data_save, "r", encoding="utf-8") as f:
@@ -96,7 +97,8 @@ def main(sft_data_name: str, frame_or_video: str):
     with open(data_save, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
     update_dataset_info(sft_data_name, data_file)
-        
+    
+    
     for zip_file in zip_file_list:
         zip_url = f"https://huggingface.co/datasets/{HF_VIDEO_REPO}/resolve/main/{zip_file}"
         zip_save = os.path.join("data", f"{zip_file}")
