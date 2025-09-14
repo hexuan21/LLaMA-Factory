@@ -74,11 +74,15 @@ def update_dataset_info(sft_data_name: str, data_file: str, ds_info_path: str = 
 def main(sft_data_name: str, frame_or_video: str):
     data_file  = f"{sft_data_name}.json"
     data_save = os.path.join("data", data_file)
-    
+
     if frame_or_video in ["frames","frame","f"]:
-        zip_file  = f"{sft_data_name}_frames.zip"
+        if "no_cot" in zip_file:
+            sft_data_name=sft_data_name.replace("_no_cot","")
+        zip_file  = f"{sft_data_name}_frames.zip"    
         f_v_dir = os.path.join("data", "frames")
     if frame_or_video in ["videos","video","v"]:
+        if "no_cot" in zip_file:
+            sft_data_name=sft_data_name.replace("_no_cot","")
         zip_file  = f"{sft_data_name}_videos.zip"
         f_v_dir = os.path.join("data", "videos")
     zip_save = os.path.join("data", zip_file)
