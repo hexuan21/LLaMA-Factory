@@ -1,4 +1,4 @@
-uv venv .envs/lmfac
+uv venv --python=3.10 .envs/lmfac
 source .envs/lmfac/bin/activate
 
 uv pip install -e ".[torch,metrics]"
