@@ -105,8 +105,6 @@ def main(sft_data_name: str, frame_or_video: str):
         download_file(zip_url, zip_save, overwrite=True)
         os.makedirs(f_v_dir, exist_ok=True)
         try:
-            if os.path.exists(f_v_dir):
-                shutil.rmtree(f_v_dir)
             os.makedirs(f_v_dir, exist_ok=True)
             with ZipFile(zip_save) as zf:
                 zf.extractall(f_v_dir)
