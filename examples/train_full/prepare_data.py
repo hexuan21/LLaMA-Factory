@@ -89,7 +89,6 @@ def main(sft_data_name: str, frame_or_video: str):
         zip_file_list=[f for f in hf_video_repo_files if core_name in f and f.endswith(".zip") and "videos" in f]
         f_v_dir = os.path.join("data", "videos")
     print(zip_file_list)
-    zip_file_list=['sft_27k_videos_5.zip', 'sft_27k_videos_6.zip', ]
     
     data_url = f"https://huggingface.co/datasets/{HF_DATASET_USER}/{HF_DATASET_NAME}/resolve/main/{data_file}"
     download_file(data_url, data_save, overwrite=True)
