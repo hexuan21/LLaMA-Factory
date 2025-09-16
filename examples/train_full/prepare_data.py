@@ -99,18 +99,18 @@ def main(sft_data_name: str, frame_or_video: str):
     update_dataset_info(sft_data_name, data_file)
     
     
-    # for zip_file in zip_file_list:
-    #     zip_url = f"https://huggingface.co/datasets/{HF_VIDEO_REPO}/resolve/main/{zip_file}"
-    #     zip_save = os.path.join("data", f"{zip_file}")
-    #     download_file(zip_url, zip_save, overwrite=True)
-    #     os.makedirs(f_v_dir, exist_ok=True)
-    #     try:
-    #         with ZipFile(zip_save) as zf:
-    #             zf.extractall(f_v_dir)
-    #         print(f"[ok] Unzipped → {f_v_dir}")
-    #     except BadZipFile as e:
-    #         print(f"[error] Bad zip file: {e}")
-    #     os.remove(zip_save)
+    for zip_file in zip_file_list:
+        zip_url = f"https://huggingface.co/datasets/{HF_VIDEO_REPO}/resolve/main/{zip_file}"
+        zip_save = os.path.join("data", f"{zip_file}")
+        download_file(zip_url, zip_save, overwrite=True)
+        os.makedirs(f_v_dir, exist_ok=True)
+        try:
+            with ZipFile(zip_save) as zf:
+                zf.extractall(f_v_dir)
+            print(f"[ok] Unzipped → {f_v_dir}")
+        except BadZipFile as e:
+            print(f"[error] Bad zip file: {e}")
+        os.remove(zip_save)
         
 
 if __name__ == "__main__":
