@@ -23,8 +23,8 @@ template: qwen2_vl
 cutoff_len: 8192
 max_samples: 1000000
 overwrite_cache: true
-preprocessing_num_workers: 8
-dataloader_num_workers: 2
+preprocessing_num_workers: 16
+dataloader_num_workers: 4
 
 ### output
 output_dir: saves/vs2_qwen2_5vl_sft_27k_1e-4_2fps_960_720_8192
@@ -38,7 +38,7 @@ export_hub_model_id: videoscore2/vs2_qwen2_5vl_sft_27k_1e-4_2fps_960_720_8192
 hf_hub_token: null
 
 ### train
-per_device_train_batch_size: 2
+per_device_train_batch_size: 1
 gradient_accumulation_steps: 8
 learning_rate: 1.0e-4
 num_train_epochs: 2.0
