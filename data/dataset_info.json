@@ -746,5 +746,21 @@
       "messages": "conversations",
       "videos": "videos"
     }
+  },
+  "sft_27k_no_cot": {
+    "file_name": "sft_27k_no_cot.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "videos": "videos"
+    }
+  },
+  "sft_hq_20k": {
+    "file_name": "sft_hq_20k.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "videos": "videos"
+    }
   }
 }
